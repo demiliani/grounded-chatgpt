@@ -5,22 +5,22 @@
 @inject IWebHostEnvironment WebHostEnvironment
 @inject NavigationManager NavigationManager
 
-<h1>Setup</h1>
+<h1>Indexing Setup</h1>
 
 <InputTextOnChanged @bind-Value="createIndexName" />
 <button class="btn btn-primary" @onclick="CreateIndexAsync" disabled="@CreateIndexDisabled">Create Index</button>
 
 <hr />
 
-<h2>Index the Bible</h2>
+@* <h2>Index the Bible</h2>
 
 <p>Bible data always goes into the <code>bible</code> index.</p>
 
 <button class="btn btn-primary" @onclick="IndexBibleAsync">Index Bible</button>
 
-<hr />
+<hr /> *@
 
-<h2>Index the Web</h2>
+<h2>Index a Web Page</h2>
 
 <InputSelect @bind-Value="selectedIndex">
     <option value="">Select Index</option>
@@ -81,7 +81,7 @@
         }
     }
 
-    private async Task IndexBibleAsync()
+    @* private async Task IndexBibleAsync()
     {
         try
         {
@@ -95,14 +95,14 @@
             Logger.LogError(ex, "Indexing failed.");
             indexerStatus = $"Failed: {ex}";
         }
-    }
+    } *@
 
     private async Task IndexUriAsync()
     {
         try
         {
             await ResourceIndexer.IndexUriAsync(selectedIndex, uri, SimpleProgress());
-            indexerStatus = $"Done indexing {uri}";
+            indexerStatus = $"Completed indexing {uri}";
         }
         catch (Exception ex)
         {
@@ -135,7 +135,7 @@
                 await ResourceIndexer.IndexPdfAsync(selectedIndex, file.Name, file.Path, file.Uri, SimpleProgress());
             }
 
-            indexerStatus = "Done indexing PDF files.";
+            indexerStatus = "PDF files indexing completed.";
         }
         catch (Exception ex)
         {

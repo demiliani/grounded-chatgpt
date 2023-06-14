@@ -14,32 +14,32 @@ public sealed class ResourceIndexer
 		_logger = logger;
     }
 
-    public async Task IndexBibleAsync(string indexName, IProgress<string> progress)
-    {
-        foreach (var book in Structure.Books)
-        {
-            foreach (var chapter in book.Chapters)
-            {
-                var documents = new List<SourceDocument>();
+    // public async Task IndexBibleAsync(string indexName, IProgress<string> progress)
+    // {
+    //     foreach (var book in Structure.Books)
+    //     {
+    //         foreach (var chapter in book.Chapters)
+    //         {
+    //             var documents = new List<SourceDocument>();
 
-                for (int verse = chapter.BeginVerse; verse != chapter.EndVerse; ++verse)
-                {
-                    var documentId = $"{book.Name} {chapter.Index + 1}:{verse - chapter.BeginVerse + 1}";
-                    var text = PreprocessText(Bible.FormattedVerse(verse).Text);
-                    documents.Add(new SourceDocument
-                    {
-                        Id = documentId,
-                        Text = text,
-                        Uri = $"https://ref.ly/r/kjv/{Uri.EscapeDataString(documentId)}",
-                        Name = documentId,
-                    });
-                }
+    //             for (int verse = chapter.BeginVerse; verse != chapter.EndVerse; ++verse)
+    //             {
+    //                 var documentId = $"{book.Name} {chapter.Index + 1}:{verse - chapter.BeginVerse + 1}";
+    //                 var text = PreprocessText(Bible.FormattedVerse(verse).Text);
+    //                 documents.Add(new SourceDocument
+    //                 {
+    //                     Id = documentId,
+    //                     Text = text,
+    //                     Uri = $"https://ref.ly/r/kjv/{Uri.EscapeDataString(documentId)}",
+    //                     Name = documentId,
+    //                 });
+    //             }
 
-                await _elasticsearchService.IndexAsync(indexName, documents);
-                progress?.Report($"Completed {book.Name} {chapter.Index + 1}");
-            }
-        }
-    }
+    //             await _elasticsearchService.IndexAsync(indexName, documents);
+    //             progress?.Report($"Completed {book.Name} {chapter.Index + 1}");
+    //         }
+    //     }
+    // }
 
     public async Task IndexUriAsync(string indexName, string uri, IProgress<string> progress)
     {

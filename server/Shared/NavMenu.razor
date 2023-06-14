@@ -2,7 +2,7 @@
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">SD OPENAI Demo</a>
+        <a class="navbar-brand" href="">SD Azure OpenAI Demo</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,24 +13,24 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="admin">
-                <span class="oi oi-home" aria-hidden="true"></span> Admin
+                <span class="oi oi-home" aria-hidden="true"></span> Administration
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Index
+                <span class="oi oi-home" aria-hidden="true"></span> Indexing
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="chat">
-                <span class="oi oi-plus" aria-hidden="true"></span> Chat
+                <span class="oi oi-plus" aria-hidden="true"></span> Chat with data
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
             <form>
                 <div class="form-group row">
-                    <label class="col col-form-label">Cost</label>
+                    <label class="col col-form-label">Estimated Cost</label>
                     <div class="col">
                         <InputText readonly="1" @bind-Value="Cost" style="max-width:120px" />
                     </div>

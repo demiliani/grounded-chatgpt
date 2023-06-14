@@ -4,9 +4,9 @@
 @inject GlobalCostTracker CostTracker
 @inject ElasticsearchService ElasticsearchService
 
-<PageTitle>ChatGPT</PageTitle>
+<PageTitle>Chat with data</PageTitle>
 
-<h1>Augmented Retrieval Generation Playground</h1>
+<h1>Data Retrieval Playground</h1>
 
 <EditForm Model="@this" OnSubmit="@SubmitAsync">
 	<div class="form-group">
@@ -24,7 +24,7 @@
 	</div>
 *@
 	<div class="form-group">
-		<label>Augmented Search Index</label>
+		<label>Search Index</label>
 		<InputSelect @bind-Value="selectedIndex">
 			<option value="">(Baseline)</option>
 			@foreach (var item in indices)
