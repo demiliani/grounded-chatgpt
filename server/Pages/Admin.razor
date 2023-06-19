@@ -49,8 +49,8 @@
 	{
 		OpenAiClientProvider.SetOptions(Options);
 		if (OpenAiClientProvider.Client == null)
-			Message = $"Saved at {DateTimeOffset.Now}; client NOT created";
+			Message = $"Saved at {DateTimeOffset.Now}; OpenAI client NOT created";
 		else
-			Message = $"Saved at {DateTimeOffset.Now}; good to go!";
+			Message = $"Saved at {DateTimeOffset.Now};";
 	}
 }
